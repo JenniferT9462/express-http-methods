@@ -85,6 +85,7 @@ This assignment aims to familiarize you with handling HTTP methods (GET and POST
             app.get('/user/:id', (req, res) => {
                 res.send(req.params)
             })
+- Query Parameters:
 
     * Add a route to handle query parameters for `/search`:
 
@@ -105,7 +106,7 @@ This assignment aims to familiarize you with handling HTTP methods (GET and POST
         - Endpoint: http://localhost:3000/about
         ![GET about](<img/aboutPostman.png>)
     * POST /contact should accept and return JSON data.
-        - Endpoint:  http://localhost:3000/data
+        - Endpoint:  http://localhost:3000/contact
         ![POST data](<img/contactPostman.png>)
     * URL parameters for `/user/:id`
         - Endpoint: http://localhost:3000/user/34
