@@ -18,24 +18,42 @@ app.get('/about', (req, res) => {
 
 app.post('/contact', (req, res) => {
     const data = req.body;
-    res.json(data);
-    //res.send('This is the Contact Page')
+    if(data.name) {
+        res.status(200).send(data)
+        console.log(data)
+    } else {
+        res.status(400).send({
+            error: "Name required"
+        })
+    }
 })
 //Route with URL parameters
 app.get('/user/:id', (req, res) => {
-    res.send(req.params)
+    const userId = req.params.id;
+    console.log(userId);
+    res.json({
+        "UserId": + userId
+    })
 })
 
 //Route with query parameters
 app.get('/search', (req, res) => {
     const { query, category } = req.query;
-    res.send(`Search Query: ${query}, Category: ${category}`);
+    res.json({
+        "Search Query": query, 
+        "Category": category
+    })
 })
 
 //Catch-all route for undefined routes returns 404
 app.use((req, res, next) => {
     res.status(404).send("Sorry can't find that!")
 })
+
+// app.all('*', (req, res) => {
+//     res.status(404).send('<h1>404! Page not found</h1>');
+// });
+  
 
 //Start the server
 app.listen(3000, () => {
